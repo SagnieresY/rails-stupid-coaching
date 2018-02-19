@@ -1,9 +1,17 @@
 class QuestionsController < ApplicationController
   def ask
+
   end
 
   def answer
-    @answer = params[:question].to_s
-    puts @answer
+    @question = params[:question].to_s
+
+    if @question == "I am going to work"
+      @answer = "Great!"
+    elsif @question.match?(/[^abc]*[?]$/)
+      @answer = "Silly question, get dressed and go to work!"
+    else
+      @answer = "I don't care, get dressed and go to work!"
+    end
   end
 end
